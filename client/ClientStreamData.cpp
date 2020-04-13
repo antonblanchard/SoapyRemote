@@ -110,7 +110,7 @@ void ClientStreamData::convertRecvBuffs(void * const *buffs, const size_t numEle
             auto out = (int16_t *)buffs[i];
             for (size_t j = 0; j < numElems*2; j++)
             {
-                out[j] = int16_t(in[j]);
+                out[j] = int16_t(in[j] << 8);
             }
         }
     }
@@ -242,7 +242,7 @@ void ClientStreamData::convertSendBuffs(const void * const *buffs, const size_t 
             auto out = (int8_t *)sendBuffs[i];
             for (size_t j = 0; j < numElems*2; j++)
             {
-                out[j] = int8_t(in[j]);
+                out[j] = int8_t(in[j] >> 8);
             }
         }
     }
